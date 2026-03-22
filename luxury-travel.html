@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Voyage Élite — Luxury Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0d1f3c;
+    --navy-mid: #162d52;
+    --navy-light: #1e3a6a;
+    --champagne: #e8d5a3;
+    --champagne-light: #f5ecd4;
+    --champagne-pale: #fdf8ee;
+    --gold: #c9a84c;
+    --gold-light: #e2c47a;
+    --white: #ffffff;
+    --text-dark: #0d1f3c;
+    --text-mid: #3a4f6e;
+    --radius: 4px;
+    --shadow: 0 8px 40px rgba(13,31,60,0.13);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--champagne-pale);
+    color: var(--text-dark);
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 80px;
+    border-bottom: 1px solid rgba(232,213,163,0.18);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--champagne);
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); font-style: italic; }
+
+  .nav-links {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--champagne-light);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    transition: background 0.2s, color 0.2s;
+    display: block;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    background: rgba(232,213,163,0.12);
+    color: var(--champagne);
+  }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    font-weight: 500 !important;
+    border-radius: var(--radius) !important;
+    padding: 13px 24px !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(165deg, var(--navy) 0%, var(--navy-mid) 45%, #1a3560 100%);
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 64px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 700px 500px at 80% 50%, rgba(201,168,76,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 10% 80%, rgba(30,58,106,0.8) 0%, transparent 60%);
+  }
+
+  .hero-waves {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    opacity: 0.07;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 18px,
+      rgba(232,213,163,0.5) 18px,
+      rgba(232,213,163,0.5) 20px
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 680px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 78px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--champagne);
+  }
+
+  .hero-sub {
+    font-size: 20px;
+    color: rgba(232,213,163,0.75);
+    margin-bottom: 48px;
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 18px 38px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--champagne);
+    padding: 17px 38px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(232,213,163,0.4);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--champagne);
+    background: rgba(232,213,163,0.08);
+  }
+
+  .phone-badge {
+    position: absolute;
+    right: 64px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(232,213,163,0.2);
+    border-radius: 12px;
+    padding: 36px 40px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    animation: fadeUp 1.1s 0.2s ease both;
+  }
+
+  .phone-badge .icon { font-size: 40px; margin-bottom: 12px; }
+  .phone-badge p { color: rgba(232,213,163,0.6); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .phone-badge .number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    color: var(--champagne);
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+  .phone-badge .tagline { color: rgba(232,213,163,0.5); font-size: 13px; margin-top: 8px; }
+
+  /* ─── SECTION COMMON ─── */
+  section { padding: 100px 64px; }
+
+  .section-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .section-title em { font-style: italic; color: var(--navy-light); }
+
+  .section-sub {
+    font-size: 18px;
+    color: var(--text-mid);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  /* ─── SEARCH / PLAN ─── */
+  .search-section {
+    background: var(--white);
+    padding: 60px 64px;
+    border-top: 3px solid var(--gold);
+  }
+
+  .search-bar {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--champagne-pale);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow);
+  }
+
+  .search-bar h3 {
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .search-field {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .search-field label {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    font-weight: 500;
+  }
+
+  .search-field select,
+  .search-field input {
+    border: 1px solid rgba(13,31,60,0.2);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-size: 18px;
+    font-family: 'Jost', sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-field select:focus,
+  .search-field input:focus {
+    border-color: var(--gold);
+  }
+
+  .search-btn {
+    align-self: flex-end;
+    background: var(--navy);
+    color: var(--champagne);
+    border: none;
+    border-radius: var(--radius);
+    padding: 15px 36px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+  }
+
+  .search-btn:hover { background: var(--navy-light); }
+
+  /* ─── DESTINATIONS ─── */
+  #destinations { background: var(--champagne-pale); }
+
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .dest-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .dest-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(13,31,60,0.18);
+  }
+
+  .dest-img {
+    height: 220px;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dest-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,31,60,0.75) 0%, transparent 55%);
+  }
+
+  .dest-badge {
+    position: relative;
+    z-index: 1;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  /* destination emoji backgrounds */
+  .dest-img.med    { background: linear-gradient(135deg, #1a6b8a 0%, #2d9cdb 50%, #1a4f6e 100%); font-size: 80px; justify-content: center; padding-bottom: 40px; }
+  .dest-img.safari { background: linear-gradient(135deg, #8b5e3c 0%, #c4852a 50%, #5d3a1a 100%); font-size: 80px; justify-content: center; padding-bottom: 40px; }
+  .dest-img.cruise { background: linear-gradient(135deg, #1e3a6a 0%, #2c5f9e 50%, #0d1f3c 100%); font-size: 80px; justify-content: center; padding-bottom: 40px; }
+  .dest-img.asia   { background: linear-gradient(135deg, #7b2d2d 0%, #c0392b 50%, #4a1010 100%); font-size: 80px; justify-content: center; padding-bottom: 40px; }
+  .dest-img.alps   { background: linear-gradient(135deg, #2e4057 0%, #4a7fa5 50%, #1a2a3a 100%); font-size: 80px; justify-content: center; padding-bottom: 40px; }
+  .dest-img.villa  { background: linear-gradient(135deg, #4a5e3a 0%, #7daf5e 50%, #2a3a1f 100%); font-size: 80px; justify-content: center; padding-bottom: 40px; }
+
+  .dest-emoji { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); font-size: 72px; z-index: 0; }
+
+  .dest-body { padding: 24px 28px 28px; }
+
+  .dest-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .dest-desc {
+    font-size: 16px;
+    color: var(--text-mid);
+    margin-bottom: 18px;
+    line-height: 1.65;
+  }
+
+  .dest-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding-top: 16px;
+  }
+
+  .dest-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--navy);
+  }
+
+  .dest-price span { font-size: 14px; color: var(--text-mid); font-family: 'Jost', sans-serif; }
+
+  .dest-link {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .dest-link:hover { border-color: var(--gold); }
+
+  /* ─── ITINERARY BUILDER ─── */
+  #itinerary { background: var(--navy); color: var(--champagne-light); }
+
+  #itinerary .section-title { color: var(--champagne); }
+  #itinerary .section-sub { color: rgba(232,213,163,0.65); }
+
+  .itinerary-builder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1000px;
+  }
+
+  .itin-step {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(232,213,163,0.15);
+    border-radius: 8px;
+    padding: 32px;
+  }
+
+  .itin-step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--champagne);
+    margin-bottom: 6px;
+  }
+
+  .itin-step .step-num {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .itin-step p {
+    font-size: 16px;
+    color: rgba(232,213,163,0.6);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip {
+    background: rgba(232,213,163,0.1);
+    border: 1px solid rgba(232,213,163,0.25);
+    color: var(--champagne-light);
+    padding: 10px 18px;
+    border-radius: 40px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    user-select: none;
+  }
+
+  .chip:hover, .chip.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+
+  .itin-cta {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+  }
+
+  .itin-cta p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--champagne);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  /* ─── FAQ ─── */
+  #faq { background: var(--white); }
+
+  .faq-list { max-width: 780px; }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(13,31,60,0.1);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 26px 0;
+    font-size: 19px;
+    font-family: 'Jost', sans-serif;
+    color: var(--navy);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .faq-q:hover { color: var(--gold); }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--gold);
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-a {
+    font-size: 17px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 0 0 0;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 400px;
+    padding-bottom: 26px;
+  }
+
+  /* ─── BOOK ─── */
+  #book {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    text-align: center;
+    padding: 100px 64px;
+  }
+
+  #book .section-title { color: var(--champagne); margin: 0 auto 18px; }
+  #book .section-sub { color: rgba(232,213,163,0.65); margin: 0 auto 48px; text-align: center; }
+
+  .book-options {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .book-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(232,213,163,0.2);
+    border-radius: 10px;
+    padding: 40px 36px;
+    width: 240px;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: pointer;
+  }
+
+  .book-card:hover {
+    background: rgba(232,213,163,0.1);
+    border-color: rgba(232,213,163,0.4);
+  }
+
+  .book-card .bicon { font-size: 44px; margin-bottom: 16px; }
+
+  .book-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--champagne);
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .book-card p {
+    font-size: 15px;
+    color: rgba(232,213,163,0.55);
+    line-height: 1.6;
+  }
+
+  .trust-row {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 56px;
+    border-top: 1px solid rgba(232,213,163,0.12);
+  }
+
+  .trust-item { text-align: center; }
+
+  .trust-item .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  .trust-item .label {
+    font-size: 14px;
+    color: rgba(232,213,163,0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #070f1e;
+    padding: 48px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-top: 1px solid rgba(232,213,163,0.08);
+  }
+
+  footer .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--champagne);
+    letter-spacing: 2px;
+  }
+
+  footer .logo span { color: var(--gold); font-style: italic; }
+
+  footer p {
+    font-size: 14px;
+    color: rgba(232,213,163,0.35);
+  }
+
+  footer .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  footer .footer-links a {
+    font-size: 14px;
+    color: rgba(232,213,163,0.4);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  footer .footer-links a:hover { color: var(--champagne); }
+
+  /* ─── STICKY CALL BUTTON ─── */
+  .sticky-call {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    border-radius: 50px;
+    padding: 16px 26px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Jost', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 32px rgba(201,168,76,0.4);
+    z-index: 200;
+    transition: transform 0.2s, background 0.2s;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+
+  .sticky-call:hover {
+    transform: translateY(-3px);
+    background: var(--gold-light);
+  }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(7,15,30,0.85);
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--champagne-pale);
+    border-radius: 10px;
+    padding: 52px;
+    max-width: 560px;
+    width: 90%;
+    position: relative;
+    border-top: 4px solid var(--gold);
+    animation: fadeUp 0.3s ease both;
+  }
+
+  .modal h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    color: var(--navy);
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+
+  .modal p { font-size: 17px; color: var(--text-mid); margin-bottom: 28px; }
+
+  .modal input, .modal select, .modal textarea {
+    width: 100%;
+    border: 1px solid rgba(13,31,60,0.2);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    font-size: 17px;
+    font-family: 'Jost', sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    margin-bottom: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .modal input:focus, .modal select:focus, .modal textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .modal textarea { height: 100px; resize: none; }
+
+  .modal-close {
+    position: absolute;
+    top: 18px; right: 22px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--text-mid);
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .modal-close:hover { color: var(--navy); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 64px 24px; }
+    .phone-badge { display: none; }
+    section { padding: 70px 24px; }
+    .search-section { padding: 48px 24px; }
+    .itinerary-builder { grid-template-columns: 1fr; }
+    .itin-cta { grid-column: auto; }
+    #book { padding: 70px 24px; }
+    footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+    .trust-row { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>Voyage</span> Élite</a>
+  <ul class="nav-links">
+    <li><a href="#destinations" class="active">Destinations</a></li>
+    <li><a href="#itinerary">Plan My Trip</a></li>
+    <li><a href="#faq">Help & FAQs</a></li>
+    <li><a href="#book" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ Curated luxury travel since 1987 ✦</p>
+    <h1>The World's Finest<br /><em>Journeys, Crafted<br />for You.</em></h1>
+    <p class="hero-sub">Bespoke travel experiences for those who appreciate the exceptional — with personal support every step of the way.</p>
+    <div class="hero-actions">
+      <a href="#destinations" class="btn-primary">Explore Destinations</a>
+      <a href="#itinerary" class="btn-outline">Plan My Journey</a>
+    </div>
+  </div>
+  <div class="phone-badge">
+    <div class="icon">📞</div>
+    <p>Speak to an expert</p>
+    <div class="number">0800 123 4567</div>
+    <div class="tagline">Mon–Fri, 8am–8pm · Free to call</div>
+  </div>
+  <div class="hero-waves"></div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <div class="search-bar">
+    <h3>Find Your Perfect Journey</h3>
+    <div class="search-field">
+      <label>Where to?</label>
+      <select>
+        <option>Any destination</option>
+        <option>Mediterranean</option>
+        <option>Africa Safari</option>
+        <option>Southeast Asia</option>
+        <option>European Alps</option>
+        <option>Private Islands</option>
+        <option>South America</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Travel style</label>
+      <select>
+        <option>Any style</option>
+        <option>Cruise</option>
+        <option>Private Villa</option>
+        <option>Cultural Tour</option>
+        <option>Safari</option>
+        <option>City & Heritage</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>When</label>
+      <input type="month" />
+    </div>
+    <div class="search-field">
+      <label>Travellers</label>
+      <select>
+        <option>Just me</option>
+        <option>2 people</option>
+        <option>3–4 people</option>
+        <option>Small group (5+)</option>
+      </select>
+    </div>
+    <button class="search-btn" onclick="openModal()">Search →</button>
+  </div>
+</div>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="section-label">✦ Handpicked Escapes</div>
+  <h2 class="section-title">Our Most <em>Beloved</em> Destinations</h2>
+  <p class="section-sub">Each journey is thoughtfully designed — with premium transfers, expert guides, and suites that feel like home.</p>
+
+  <div class="dest-grid">
+
+    <div class="dest-card">
+      <div class="dest-img med">
+        <span class="dest-emoji">⛵</span>
+        <span class="dest-badge">Most Popular</span>
+      </div>
+      <div class="dest-body">
+        <div class="dest-name">The Mediterranean</div>
+        <p class="dest-desc">Sail the azure waters of Greece, Italy, and Croatia aboard a private yacht with a personal crew and chef.</p>
+        <div class="dest-footer">
+          <div class="dest-price">From £6,200 <span>/ person</span></div>
+          <a href="#" class="dest-link" onclick="openModal(); return false;">View Journey →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dest-card">
+      <div class="dest-img safari">
+        <span class="dest-emoji">🦁</span>
+        <span class="dest-badge">Exclusive</span>
+      </div>
+      <div class="dest-body">
+        <div class="dest-name">African Safari</div>
+        <p class="dest-desc">Private game drives, luxury tented camps, and sunrise views over the Serengeti — utterly unforgettable.</p>
+        <div class="dest-footer">
+          <div class="dest-price">From £8,500 <span>/ person</span></div>
+          <a href="#" class="dest-link" onclick="openModal(); return false;">View Journey →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dest-card">
+      <div class="dest-img cruise">
+        <span class="dest-emoji">🚢</span>
+        <span class="dest-badge">New for 2026</span>
+      </div>
+      <div class="dest-body">
+        <div class="dest-name">Grand Ocean Cruise</div>
+        <p class="dest-desc">Transatlantic elegance on a boutique liner — champagne evenings, shore excursions, and impeccable service.</p>
+        <div class="dest-footer">
+          <div class="dest-price">From £9,800 <span>/ person</span></div>
+          <a href="#" class="dest-link" onclick="openModal(); return false;">View Journey →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dest-card">
+      <div class="dest-img asia">
+        <span class="dest-emoji">🏯</span>
+        <span class="dest-badge">Cultural</span>
+      </div>
+      <div class="dest-body">
+        <div class="dest-name">Secrets of Japan</div>
+        <p class="dest-desc">Ancient temples, Michelin-starred ryokans, and private access to Kyoto's most sacred gardens.</p>
+        <div class="dest-footer">
+          <div class="dest-price">From £7,400 <span>/ person</span></div>
+          <a href="#" class="dest-link" onclick="openModal(); return false;">View Journey →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dest-card">
+      <div class="dest-img alps">
+        <span class="dest-emoji">🏔️</span>
+        <span class="dest-badge">Winter Special</span>
+      </div>
+      <div class="dest-body">
+        <div class="dest-name">The Swiss Alps</div>
+        <p class="dest-desc">Arrive by private train, stay in a landmark chalet, and dine above the clouds with panoramic mountain views.</p>
+        <div class="dest-footer">
+          <div class="dest-price">From £5,600 <span>/ person</span></div>
+          <a href="#" class="dest-link" onclick="openModal(); return false;">View Journey →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dest-card">
+      <div class="dest-img villa">
+        <span class="dest-emoji">🏝️</span>
+        <span class="dest-badge">Private</span>
+      </div>
+      <div class="dest-body">
+        <div class="dest-name">Private Villa Retreat</div>
+        <p class="dest-desc">Your own villa in Tuscany, the Algarve, or Bali — with staff, a pool, and curated local experiences.</p>
+        <div class="dest-footer">
+          <div class="dest-price">From £4,900 <span>/ person</span></div>
+          <a href="#" class="dest-link" onclick="openModal(); return false;">View Journey →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ITINERARY BUILDER -->
+<section id="itinerary">
+  <div class="section-label">✦ Your Personal Journey</div>
+  <h2 class="section-title">Build Your <em>Dream</em> Itinerary</h2>
+  <p class="section-sub">Tell us what matters most and our travel experts will craft a bespoke itinerary just for you — no forms, no fuss.</p>
+
+  <div class="itinerary-builder">
+
+    <div class="itin-step">
+      <div class="step-num">Step 1</div>
+      <h4>Choose Your Region</h4>
+      <p>Where in the world are you dreaming of? Select as many as you like.</p>
+      <div class="chip-group">
+        <span class="chip" onclick="toggleChip(this)">🌊 Mediterranean</span>
+        <span class="chip" onclick="toggleChip(this)">🌍 Africa</span>
+        <span class="chip" onclick="toggleChip(this)">🌸 Asia</span>
+        <span class="chip" onclick="toggleChip(this)">🏔️ Europe</span>
+        <span class="chip" onclick="toggleChip(this)">🌎 The Americas</span>
+        <span class="chip" onclick="toggleChip(this)">🏝️ Private Islands</span>
+      </div>
+    </div>
+
+    <div class="itin-step">
+      <div class="step-num">Step 2</div>
+      <h4>Your Travel Style</h4>
+      <p>What kind of experience speaks to you most?</p>
+      <div class="chip-group">
+        <span class="chip" onclick="toggleChip(this)">🚢 Cruise</span>
+        <span class="chip" onclick="toggleChip(this)">🏛️ Culture & History</span>
+        <span class="chip" onclick="toggleChip(this)">🦁 Safari & Wildlife</span>
+        <span class="chip" onclick="toggleChip(this)">🍷 Food & Wine</span>
+        <span class="chip" onclick="toggleChip(this)">🌿 Nature & Wellness</span>
+        <span class="chip" onclick="toggleChip(this)">🏡 Villa & Resort</span>
+      </div>
+    </div>
+
+    <div class="itin-step">
+      <div class="step-num">Step 3</div>
+      <h4>Important Preferences</h4>
+      <p>What matters most to ensure your comfort?</p>
+      <div class="chip-group">
+        <span class="chip" onclick="toggleChip(this)">✈️ Business Class Flights</span>
+        <span class="chip" onclick="toggleChip(this)">♿ Accessibility Support</span>
+        <span class="chip" onclick="toggleChip(this)">🧳 Luggage Handling</span>
+        <span class="chip" onclick="toggleChip(this)">🩺 Medical Facilities Nearby</span>
+        <span class="chip" onclick="toggleChip(this)">👨‍👩‍👧 Family Friendly</span>
+        <span class="chip" onclick="toggleChip(this)">🌱 Dietary Requirements</span>
+      </div>
+    </div>
+
+    <div class="itin-step">
+      <div class="step-num">Step 4</div>
+      <h4>Trip Duration</h4>
+      <p>How long would you like to travel?</p>
+      <div class="chip-group">
+        <span class="chip" onclick="toggleChip(this)">1 Week</span>
+        <span class="chip" onclick="toggleChip(this)">2 Weeks</span>
+        <span class="chip" onclick="toggleChip(this)">3 Weeks</span>
+        <span class="chip" onclick="toggleChip(this)">A Month+</span>
+      </div>
+    </div>
+
+    <div class="itin-cta">
+      <p>Ready to create your perfect itinerary?</p>
+      <button class="btn-primary" onclick="openModal()">Send My Preferences to an Expert</button>
+      <p style="margin-top:18px; font-size:15px; color:rgba(232,213,163,0.45);">Or call us free: <strong style="color:var(--champagne)">0800 123 4567</strong> — we'd love to chat.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-label">✦ Here to Help</div>
+  <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+  <p class="section-sub">No question is too small. Here are the answers our guests ask most often.</p>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How do I book a trip — do I need to do it online?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Not at all. You can book entirely by phone — simply call us free on <strong>0800 123 4567</strong> and one of our travel experts will handle everything for you. We're available Monday to Friday, 8am–8pm, and on Saturdays 9am–5pm.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What does "fully managed" travel mean?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">It means we take care of absolutely everything — flights, transfers, hotels, excursions, dining reservations, and any special requests. You simply show up and enjoy. A dedicated travel expert will be reachable throughout your journey, day or night.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Is travel insurance included?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">We offer comprehensive luxury travel insurance as part of all our packages, including medical emergency cover, trip cancellation, and lost luggage protection. We can also arrange specialist cover for pre-existing health conditions — just let us know your needs.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Can you accommodate mobility or health requirements?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Absolutely. We specialise in making luxury travel accessible and comfortable for everyone. Whether you require wheelchair-friendly rooms, ground-floor accommodations, slower-paced itineraries, or proximity to medical facilities, we will personalise your journey accordingly.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What happens if I need to cancel or change my trip?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">We understand that plans change. Our flexible booking policy allows amendments up to 60 days before departure with no penalty. We will always do our best to accommodate changes even closer to your travel date, and our travel insurance provides additional peace of mind.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Can I travel as a solo guest?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes, many of our guests travel solo and absolutely love it. We have specially curated solo journeys with no single supplements on selected departures, and our small-group tours are a wonderful way to meet like-minded travellers in a relaxed, luxurious setting.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How far in advance should I book?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">We recommend booking 3–6 months in advance for the best availability, particularly for peak seasons and our most popular destinations. However, we can often arrange wonderful last-minute departures — give us a call and we'll see what we can do.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BOOK -->
+<section id="book">
+  <div class="section-label" style="color:var(--gold);">✦ Begin Your Adventure</div>
+  <h2 class="section-title" style="text-align:center;">Ready to Travel <em>in Style?</em></h2>
+  <p class="section-sub" style="text-align:center;">Choose how you'd like to get started — there's no wrong answer.</p>
+
+  <div class="book-options">
+    <div class="book-card" onclick="openModal()">
+      <div class="bicon">📋</div>
+      <h4>Online Enquiry</h4>
+      <p>Fill in a short form and we'll call you back within one working day.</p>
+    </div>
+    <div class="book-card" onclick="window.location.href='tel:08001234567'">
+      <div class="bicon">📞</div>
+      <h4>Call Us Free</h4>
+      <p>Speak directly with a travel expert on <strong style="color:var(--champagne)">0800 123 4567</strong> — we love to chat.</p>
+    </div>
+    <div class="book-card" onclick="openModal()">
+      <div class="bicon">📅</div>
+      <h4>Book a Callback</h4>
+      <p>Choose a time that suits you and we'll call you back at your convenience.</p>
+    </div>
+    <div class="book-card" onclick="openModal()">
+      <div class="bicon">✉️</div>
+      <h4>Request a Brochure</h4>
+      <p>We'll post you our beautiful printed brochure — completely free of charge.</p>
+    </div>
+  </div>
+
+  <div class="trust-row">
+    <div class="trust-item">
+      <div class="num">35+</div>
+      <div class="label">Years of Excellence</div>
+    </div>
+    <div class="trust-item">
+      <div class="num">24,000+</div>
+      <div class="label">Journeys Crafted</div>
+    </div>
+    <div class="trust-item">
+      <div class="num">98%</div>
+      <div class="label">Guest Satisfaction</div>
+    </div>
+    <div class="trust-item">
+      <div class="num">ABTA</div>
+      <div class="label">Fully Bonded & Protected</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo"><span>Voyage</span> Élite</div>
+  <p>© 2026 Voyage Élite. All rights reserved. ABTA No. Y1234 · ATOL Protected 9876</p>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<!-- STICKY CALL -->
+<a class="sticky-call" href="tel:08001234567">
+  📞 Call Us Free — 0800 123 4567
+</a>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h3>Get in Touch</h3>
+    <p>Leave your details and a travel expert will call you back — usually within a few hours.</p>
+    <input type="text" placeholder="Your full name" />
+    <input type="tel" placeholder="Your phone number" />
+    <input type="email" placeholder="Your email address (optional)" />
+    <select>
+      <option>I'm interested in... (please select)</option>
+      <option>Mediterranean Cruise / Sailing</option>
+      <option>African Safari</option>
+      <option>Grand Ocean Cruise</option>
+      <option>Japan & Asia</option>
+      <option>Swiss Alps & Europe</option>
+      <option>Private Villa Retreat</option>
+      <option>I'd like help choosing</option>
+    </select>
+    <textarea placeholder="Any special requirements, questions, or notes for us..."></textarea>
+    <button class="btn-primary" style="width:100%; font-size:18px; padding:20px;" onclick="submitEnquiry()">Send My Enquiry →</button>
+    <p style="text-align:center; margin-top:16px; font-size:15px; color:var(--text-mid);">Or call us right now: <strong>0800 123 4567</strong></p>
+  </div>
+</div>
+
+<script>
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Chip selection
+  function toggleChip(chip) {
+    chip.classList.toggle('active');
+  }
+
+  // Modal
+  function openModal() {
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modal')) closeModal();
+  }
+
+  function submitEnquiry() {
+    closeModal();
+    alert('Thank you! One of our travel experts will call you back shortly.\n\nIf you\'d prefer to speak to us now, please call 0800 123 4567.');
+  }
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id], .search-section');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    document.querySelectorAll('section[id]').forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
